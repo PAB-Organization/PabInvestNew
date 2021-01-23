@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CreditinfoServiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CreditinfoService.dbo.Client' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActiveID" Type="int" />
+          <Property Name="PIN" Type="nvarchar(max)" />
+          <Property Name="RoleOfClient" Type="nvarchar(max)" />
+          <Property Name="AGREEMENT_NO" Type="nvarchar(max)" />
+          <Property Name="IndividualType" Type="nvarchar(max)" />
+          <Property Name="GauarnteeAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Currency" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CreditInfoBatchId">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BatchId" Type="bigint" />
+          <Property Name="IsML" Type="int" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="CreditInfoResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="Result" Type="nvarchar(max)" />
+          <Property Name="ErrorTypeId" Type="int" />
+          <Property Name="IsML" Type="int" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <Function Name="GetInfoForContracts_CreditCardPI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetInfoForContracts_IntallmentPI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetInfoForContracts_NoNinstalmentPI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetPersonaData_intividualPI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TestCall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="CreditinfoServiceModelStoreContainer">
+          <EntitySet Name="CreditInfoBatchId" EntityType="Self.CreditInfoBatchId" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditInfoResult" EntityType="Self.CreditInfoResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Client].[ID] AS [ID], 
+    [Client].[ActiveID] AS [ActiveID], 
+    [Client].[PIN] AS [PIN], 
+    [Client].[RoleOfClient] AS [RoleOfClient], 
+    [Client].[AGREEMENT_NO] AS [AGREEMENT_NO], 
+    [Client].[IndividualType] AS [IndividualType], 
+    [Client].[GauarnteeAmount] AS [GauarnteeAmount], 
+    [Client].[Currency] AS [Currency]
+    FROM [dbo].[Client] AS [Client]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CreditinfoServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CreditinfoServiceEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="TestCall" ReturnType="Collection(CreditinfoServiceModel.TestCall_Result)" />
+          <FunctionImport Name="GetPersonaData_intividualPI" ReturnType="Collection(CreditinfoServiceModel.GetPersonaData_intividualPI_Result)" />
+          <EntitySet Name="CreditInfoBatchIds" EntityType="CreditinfoServiceModel.CreditInfoBatchId" />
+          <EntitySet Name="CreditInfoResults" EntityType="CreditinfoServiceModel.CreditInfoResult" />
+          <EntitySet Name="Clients" EntityType="CreditinfoServiceModel.Client" />
+          <FunctionImport Name="GetInfoForContracts_CreditCardPI" ReturnType="Collection(CreditinfoServiceModel.GetInfoForContracts_CreditCardPI_Result)" />
+          <FunctionImport Name="GetInfoForContracts_IntallmentPI" ReturnType="Collection(CreditinfoServiceModel.GetInfoForContracts_IntallmentPI_Result)" />
+          <FunctionImport Name="GetInfoForContracts_NoNinstalmentPI" ReturnType="Collection(CreditinfoServiceModel.GetInfoForContracts_NoNinstalmentPI_Result)" />
+        </EntityContainer>
+        <ComplexType Name="TestCall_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="SurName" Nullable="false" MaxLength="7" />
+        </ComplexType>
+        <ComplexType Name="GetPersonaData_intividualPI_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="PersonalData_NationalID" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="PersonalData_Firstname" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="PersonalData_Surname" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="PersonalData_Gender" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="PersonalData_BorrowerClassification" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="PersonalData_GeorgianCitizen" Nullable="false" MaxLength="19" />
+          <Property Type="String" Name="BirthData_BirthDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AddressesIndividual_PermanentResidence_AddressBaseChoice_FreeText_AddressValue" Nullable="true" />
+          <Property Type="String" Name="idenfitications_IDGeorgianCitizen_IDNumber" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <EntityType Name="CreditInfoBatchId">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchId" Type="Int64" />
+          <Property Name="IsML" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="CreditInfoResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorTypeId" Type="Int32" />
+          <Property Name="IsML" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActiveID" Type="Int32" />
+          <Property Name="PIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoleOfClient" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AGREEMENT_NO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IndividualType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GauarnteeAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Currency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="GetInfoForContracts_CreditCardPI_Result">
+          <Property Type="String" Name="CaseNumber" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="RepaymentCreditCard" Nullable="false" MaxLength="51" />
+          <Property Type="Decimal" Name="TotalCreditAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="TotalCreditAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="String" Name="PeriodicityOfPayments" Nullable="false" MaxLength="42" />
+          <Property Type="Decimal" Name="OverdueAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="OverdueAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="OutstandingAmount_AmountValue" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="String" Name="OutstandingAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="CurrentOutstandingPrincipalAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="CurrentOutstandingPrincipalAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="CurrentOverdueInteresetandCommissionAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="CurrentOverdueInteresetandCommissionAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="CurrentOverduePrincipalAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="CurrentOverduePrincipalAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Int32" Name="MaximumNumberofDelinquencyDays" Nullable="false" />
+          <Property Type="Int32" Name="TotalNumberofDelinquencyDays" Nullable="false" />
+          <Property Type="Int32" Name="TotalNumberofDelinquencyDaysInLastYear" Nullable="false" />
+          <Property Type="Decimal" Name="CurrentUndisbursedLoanAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="LoanType" Nullable="false" MaxLength="21" />
+          <Property Type="String" Name="CreditPurpose" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="CreditCurrency" Nullable="true" MaxLength="65" />
+          <Property Type="String" Name="PhaseofOperation" Nullable="false" MaxLength="63" />
+          <Property Type="String" Name="InformationAboutOverdueContract" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="LoanPartiallySecuredByDeposit" Nullable="false" MaxLength="32" />
+          <Property Type="DateTime" Name="Dates_Start" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_ExpectedEnd" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_RealEnd" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_Overdue" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Dates_Repayment" Nullable="true" />
+          <Property Type="Int32" Name="Dates_CanceledDemand" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_ExpofLimitation" Nullable="true" />
+          <Property Type="String" Name="ContractTerm" Nullable="true" MaxLength="5" />
+          <Property Type="Decimal" Name="Penalty_PenaltySum_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Penalty_PenaltySum_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="Penalty_PenaltyPaid_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Penalty_PenaltyPaid_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="String" Name="Subjects_key__0S__IndividualRelation_IdentifierIndividual" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Subjects_key__0S__IndividualRelation_RoleOfClient" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="Subjects_key__0S__CompanyRelation_IdentifierCompany" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Subjects_key__0S__CompanyRelation_RoleOfClient" Nullable="true" MaxLength="32" />
+          <Property Type="Decimal" Name="MaxInstallmentAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="MaxInstallmentCurrency" Nullable="true" />
+          <Property Type="Int32" Name="activeid" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetInfoForContracts_IntallmentPI_Result">
+          <Property Type="String" Name="CaseNumber" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="RepaymentInstalment" Nullable="false" MaxLength="51" />
+          <Property Type="String" Name="InstalmentType" Nullable="false" MaxLength="21" />
+          <Property Type="String" Name="PeriodicityOfPayments" Nullable="false" MaxLength="56" />
+          <Property Type="Decimal" Name="TotalCreditAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="TotalCreditAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Int32" Name="StandardInstallmentCount" Nullable="true" />
+          <Property Type="Decimal" Name="StandardInstallmentAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="OverdueInstallmentCount" Nullable="true" />
+          <Property Type="Decimal" Name="OverdueAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="OverdueAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="OutstandingInstallmentCount" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="OutstandingAmount_AmountValue" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="String" Name="OutstandingAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="CurrentOverduePrincipalAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="CurrentOverduePrincipalAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="CurrentOverdueInteresetandCommissionAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="CurrentOverdueInteresetandCommissionAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="CurrentOutstandingPrincipalAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="CurrentOutstandingPrincipalAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="CurrentOutstandingInteresetandCommissionAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="CurrentOutstandingInteresetandCommissionAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Int32" Name="MaximumNumberofDelinquencyDays" Nullable="false" />
+          <Property Type="Int32" Name="TotalNumberofDelinquencyDays" Nullable="false" />
+          <Property Type="Int32" Name="TotalNumberofDelinquencyDaysInLastYear" Nullable="false" />
+          <Property Type="Int32" Name="TotalNumberofOverdueInstallments" Nullable="true" />
+          <Property Type="Decimal" Name="CurrentUndisbursedLoanAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="LoanType" Nullable="false" MaxLength="21" />
+          <Property Type="String" Name="CreditPurpose" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="CreditCurrency" Nullable="true" MaxLength="65" />
+          <Property Type="String" Name="PhaseofOperation" Nullable="false" MaxLength="63" />
+          <Property Type="String" Name="InformationAboutOverdueContract" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="LoanPartiallySecuredByDeposit" Nullable="false" MaxLength="32" />
+          <Property Type="DateTime" Name="Dates_Start" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_ExpectedEnd" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_RealEnd" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_Overdue" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Dates_Repayment" Nullable="true" />
+          <Property Type="Int32" Name="Dates_CanceledDemand" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_ExpofLimitation" Nullable="true" />
+          <Property Type="String" Name="ContractTerm" Nullable="true" MaxLength="5" />
+          <Property Type="Decimal" Name="Penalty_PenaltySum_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Penalty_PenaltySum_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="Penalty_PenaltyPaid_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Penalty_PenaltyPaid_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="String" Name="Subjects_IndividualRelation_IdentifierIndividual" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Subjects_IndividualRelation_RoleOfClient" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="Subjects_CompanyRelation_IdentifierCompany" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Subjects_CompanyRelation_RoleOfClient" Nullable="true" MaxLength="32" />
+          <Property Type="Decimal" Name="MaxInstallmentAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="MaxInstallmentCurrency" Nullable="true" />
+          <Property Type="Int32" Name="activeid" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetInfoForContracts_NoNinstalmentPI_Result">
+          <Property Type="String" Name="CaseNumber" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="RepaymentNoninstalment" Nullable="false" MaxLength="51" />
+          <Property Type="Decimal" Name="CreditLimitAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="CreditLimitAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="UsedAmount_AmountValue" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="String" Name="UsedAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="String" Name="CreditUsedInMonth" Nullable="false" MaxLength="28" />
+          <Property Type="Decimal" Name="CurrentOutstandingPrincipalAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="CurrentOutstandingPrincipalAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Int32" Name="MaximumNumberofDelinquencyDays" Nullable="false" />
+          <Property Type="Int32" Name="TotalNumberofDelinquencyDays" Nullable="false" />
+          <Property Type="Int32" Name="TotalNumberofDelinquencyDaysInLastYear" Nullable="false" />
+          <Property Type="Decimal" Name="OverdueAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="OverdueAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="CurrentUndisbursedLoanAmount_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="CurrentUndisbursedLoanAmount_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="String" Name="LoanType" Nullable="false" MaxLength="21" />
+          <Property Type="String" Name="CreditPurpose" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="CreditCurrency" Nullable="true" MaxLength="65" />
+          <Property Type="String" Name="PhaseofOperation" Nullable="false" MaxLength="63" />
+          <Property Type="String" Name="InformationAboutOverdueContract" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="LoanPartiallySecuredByDeposit" Nullable="false" MaxLength="32" />
+          <Property Type="DateTime" Name="Dates_Start" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_ExpectedEnd" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_RealEnd" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_Overdue" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Dates_Repayment" Nullable="true" />
+          <Property Type="Int32" Name="Dates_CanceledDemand" Nullable="true" />
+          <Property Type="DateTime" Name="Dates_ExpofLimitation" Nullable="true" />
+          <Property Type="String" Name="ContractTerm" Nullable="true" MaxLength="5" />
+          <Property Type="Decimal" Name="Penalty_PenaltySum_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Penalty_PenaltySum_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="Decimal" Name="Penalty_PenaltyPaid_AmountValue" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Penalty_PenaltyPaid_Currency" Nullable="true" MaxLength="65" />
+          <Property Type="String" Name="Subjects_key__0S__IndividualRelation_IdentifierIndividual" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Subjects_key__0S__IndividualRelation_RoleOfClient" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="Subjects_key__0S__CompanyRelation_IdentifierCompany" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Subjects_key__0S__CompanyRelation_RoleOfClient" Nullable="true" MaxLength="32" />
+          <Property Type="Decimal" Name="MaxInstallmentAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="MaxInstallmentCurrency" Nullable="true" />
+          <Property Type="Int32" Name="activeid" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CreditinfoServiceModelStoreContainer" CdmEntityContainer="CreditinfoServiceEntities" >
+          <FunctionImportMapping FunctionImportName="TestCall" FunctionName="CreditinfoServiceModel.Store.TestCall">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditinfoServiceModel.TestCall_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPersonaData_intividualPI" FunctionName="CreditinfoServiceModel.Store.GetPersonaData_intividualPI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditinfoServiceModel.GetPersonaData_intividualPI_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="PersonalData_NationalID" ColumnName="PersonalData_NationalID" />
+                <ScalarProperty Name="PersonalData_Firstname" ColumnName="PersonalData_Firstname" />
+                <ScalarProperty Name="PersonalData_Surname" ColumnName="PersonalData_Surname" />
+                <ScalarProperty Name="PersonalData_Gender" ColumnName="PersonalData_Gender" />
+                <ScalarProperty Name="PersonalData_BorrowerClassification" ColumnName="PersonalData_BorrowerClassification" />
+                <ScalarProperty Name="PersonalData_GeorgianCitizen" ColumnName="PersonalData_GeorgianCitizen" />
+                <ScalarProperty Name="BirthData_BirthDate" ColumnName="BirthData_BirthDate" />
+                <ScalarProperty Name="AddressesIndividual_PermanentResidence_AddressBaseChoice_FreeText_AddressValue" ColumnName="AddressesIndividual_PermanentResidence_AddressBaseChoice_FreeText_AddressValue" />
+                <ScalarProperty Name="idenfitications_IDGeorgianCitizen_IDNumber" ColumnName="idenfitications_IDGeorgianCitizen_IDNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CreditInfoBatchIds">
+            <EntityTypeMapping TypeName="CreditinfoServiceModel.CreditInfoBatchId">
+              <MappingFragment StoreEntitySet="CreditInfoBatchId">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsML" ColumnName="IsML" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditInfoResults">
+            <EntityTypeMapping TypeName="CreditinfoServiceModel.CreditInfoResult">
+              <MappingFragment StoreEntitySet="CreditInfoResult">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsML" ColumnName="IsML" />
+                <ScalarProperty Name="ErrorTypeId" ColumnName="ErrorTypeId" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="CreditinfoServiceModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="GauarnteeAmount" ColumnName="GauarnteeAmount" />
+                <ScalarProperty Name="IndividualType" ColumnName="IndividualType" />
+                <ScalarProperty Name="AGREEMENT_NO" ColumnName="AGREEMENT_NO" />
+                <ScalarProperty Name="RoleOfClient" ColumnName="RoleOfClient" />
+                <ScalarProperty Name="PIN" ColumnName="PIN" />
+                <ScalarProperty Name="ActiveID" ColumnName="ActiveID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetInfoForContracts_CreditCardPI" FunctionName="CreditinfoServiceModel.Store.GetInfoForContracts_CreditCardPI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditinfoServiceModel.GetInfoForContracts_CreditCardPI_Result">
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="RepaymentCreditCard" ColumnName="RepaymentCreditCard" />
+                <ScalarProperty Name="TotalCreditAmount_AmountValue" ColumnName="TotalCreditAmount_AmountValue" />
+                <ScalarProperty Name="TotalCreditAmount_Currency" ColumnName="TotalCreditAmount_Currency" />
+                <ScalarProperty Name="PeriodicityOfPayments" ColumnName="PeriodicityOfPayments" />
+                <ScalarProperty Name="OverdueAmount_AmountValue" ColumnName="OverdueAmount_AmountValue" />
+                <ScalarProperty Name="OverdueAmount_Currency" ColumnName="OverdueAmount_Currency" />
+                <ScalarProperty Name="OutstandingAmount_AmountValue" ColumnName="OutstandingAmount_AmountValue" />
+                <ScalarProperty Name="OutstandingAmount_Currency" ColumnName="OutstandingAmount_Currency" />
+                <ScalarProperty Name="CurrentOutstandingPrincipalAmount_AmountValue" ColumnName="CurrentOutstandingPrincipalAmount_AmountValue" />
+                <ScalarProperty Name="CurrentOutstandingPrincipalAmount_Currency" ColumnName="CurrentOutstandingPrincipalAmount_Currency" />
+                <ScalarProperty Name="CurrentOverdueInteresetandCommissionAmount_AmountValue" ColumnName="CurrentOverdueInteresetandCommissionAmount_AmountValue" />
+                <ScalarProperty Name="CurrentOverdueInteresetandCommissionAmount_Currency" ColumnName="CurrentOverdueInteresetandCommissionAmount_Currency" />
+                <ScalarProperty Name="CurrentOverduePrincipalAmount_AmountValue" ColumnName="CurrentOverduePrincipalAmount_AmountValue" />
+                <ScalarProperty Name="CurrentOverduePrincipalAmount_Currency" ColumnName="CurrentOverduePrincipalAmount_Currency" />
+                <ScalarProperty Name="MaximumNumberofDelinquencyDays" ColumnName="MaximumNumberofDelinquencyDays" />
+                <ScalarProperty Name="TotalNumberofDelinquencyDays" ColumnName="TotalNumberofDelinquencyDays" />
+                <ScalarProperty Name="TotalNumberofDelinquencyDaysInLastYear" ColumnName="TotalNumberofDelinquencyDaysInLastYear" />
+                <ScalarProperty Name="CurrentUndisbursedLoanAmount_AmountValue" ColumnName="CurrentUndisbursedLoanAmount_AmountValue" />
+                <ScalarProperty Name="LoanType" ColumnName="LoanType" />
+                <ScalarProperty Name="CreditPurpose" ColumnName="CreditPurpose" />
+                <ScalarProperty Name="CreditCurrency" ColumnName="CreditCurrency" />
+                <ScalarProperty Name="PhaseofOperation" ColumnName="PhaseofOperation" />
+                <ScalarProperty Name="InformationAboutOverdueContract" ColumnName="InformationAboutOverdueContract" />
+                <ScalarProperty Name="LoanPartiallySecuredByDeposit" ColumnName="LoanPartiallySecuredByDeposit" />
+                <ScalarProperty Name="Dates_Start" ColumnName="Dates_Start" />
+                <ScalarProperty Name="Dates_ExpectedEnd" ColumnName="Dates_ExpectedEnd" />
+                <ScalarProperty Name="Dates_RealEnd" ColumnName="Dates_RealEnd" />
+                <ScalarProperty Name="Dates_Overdue" ColumnName="Dates_Overdue" />
+                <ScalarProperty Name="Dates_Repayment" ColumnName="Dates_Repayment" />
+                <ScalarProperty Name="Dates_CanceledDemand" ColumnName="Dates_CanceledDemand" />
+                <ScalarProperty Name="Dates_ExpofLimitation" ColumnName="Dates_ExpofLimitation" />
+                <ScalarProperty Name="ContractTerm" ColumnName="ContractTerm" />
+                <ScalarProperty Name="Penalty_PenaltySum_AmountValue" ColumnName="Penalty_PenaltySum_AmountValue" />
+                <ScalarProperty Name="Penalty_PenaltySum_Currency" ColumnName="Penalty_PenaltySum_Currency" />
+                <ScalarProperty Name="Penalty_PenaltyPaid_AmountValue" ColumnName="Penalty_PenaltyPaid_AmountValue" />
+                <ScalarProperty Name="Penalty_PenaltyPaid_Currency" ColumnName="Penalty_PenaltyPaid_Currency" />
+                <ScalarProperty Name="Subjects_key__0S__IndividualRelation_IdentifierIndividual" ColumnName="Subjects key=&quot;0S&quot;_IndividualRelation_IdentifierIndividual" />
+                <ScalarProperty Name="Subjects_key__0S__IndividualRelation_RoleOfClient" ColumnName="Subjects key=&quot;0S&quot;_IndividualRelation_RoleOfClient" />
+                <ScalarProperty Name="Subjects_key__0S__CompanyRelation_IdentifierCompany" ColumnName="Subjects key=&quot;0S&quot;_CompanyRelation_IdentifierCompany" />
+                <ScalarProperty Name="Subjects_key__0S__CompanyRelation_RoleOfClient" ColumnName="Subjects key=&quot;0S&quot;_CompanyRelation_RoleOfClient" />
+                <ScalarProperty Name="MaxInstallmentAmount" ColumnName="MaxInstallmentAmount" />
+                <ScalarProperty Name="MaxInstallmentCurrency" ColumnName="MaxInstallmentCurrency" />
+                <ScalarProperty Name="activeid" ColumnName="activeid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetInfoForContracts_IntallmentPI" FunctionName="CreditinfoServiceModel.Store.GetInfoForContracts_IntallmentPI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditinfoServiceModel.GetInfoForContracts_IntallmentPI_Result">
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="RepaymentInstalment" ColumnName="RepaymentInstalment" />
+                <ScalarProperty Name="InstalmentType" ColumnName="InstalmentType" />
+                <ScalarProperty Name="PeriodicityOfPayments" ColumnName="PeriodicityOfPayments" />
+                <ScalarProperty Name="TotalCreditAmount_AmountValue" ColumnName="TotalCreditAmount_AmountValue" />
+                <ScalarProperty Name="TotalCreditAmount_Currency" ColumnName="TotalCreditAmount_Currency" />
+                <ScalarProperty Name="StandardInstallmentCount" ColumnName="StandardInstallmentCount" />
+                <ScalarProperty Name="StandardInstallmentAmount" ColumnName="StandardInstallmentAmount" />
+                <ScalarProperty Name="OverdueInstallmentCount" ColumnName="OverdueInstallmentCount" />
+                <ScalarProperty Name="OverdueAmount_AmountValue" ColumnName="OverdueAmount_AmountValue" />
+                <ScalarProperty Name="OverdueAmount_Currency" ColumnName="OverdueAmount_Currency" />
+                <ScalarProperty Name="OutstandingInstallmentCount" ColumnName="OutstandingInstallmentCount" />
+                <ScalarProperty Name="OutstandingAmount_AmountValue" ColumnName="OutstandingAmount_AmountValue" />
+                <ScalarProperty Name="OutstandingAmount_Currency" ColumnName="OutstandingAmount_Currency" />
+                <ScalarProperty Name="CurrentOverduePrincipalAmount_AmountValue" ColumnName="CurrentOverduePrincipalAmount_AmountValue" />
+                <ScalarProperty Name="CurrentOverduePrincipalAmount_Currency" ColumnName="CurrentOverduePrincipalAmount_Currency" />
+                <ScalarProperty Name="CurrentOverdueInteresetandCommissionAmount_AmountValue" ColumnName="CurrentOverdueInteresetandCommissionAmount_AmountValue" />
+                <ScalarProperty Name="CurrentOverdueInteresetandCommissionAmount_Currency" ColumnName="CurrentOverdueInteresetandCommissionAmount_Currency" />
+                <ScalarProperty Name="CurrentOutstandingPrincipalAmount_AmountValue" ColumnName="CurrentOutstandingPrincipalAmount_AmountValue" />
+                <ScalarProperty Name="CurrentOutstandingPrincipalAmount_Currency" ColumnName="CurrentOutstandingPrincipalAmount_Currency" />
+                <ScalarProperty Name="CurrentOutstandingInteresetandCommissionAmount_AmountValue" ColumnName="CurrentOutstandingInteresetandCommissionAmount_AmountValue" />
+                <ScalarProperty Name="CurrentOutstandingInteresetandCommissionAmount_Currency" ColumnName="CurrentOutstandingInteresetandCommissionAmount_Currency" />
+                <ScalarProperty Name="MaximumNumberofDelinquencyDays" ColumnName="MaximumNumberofDelinquencyDays" />
+                <ScalarProperty Name="TotalNumberofDelinquencyDays" ColumnName="TotalNumberofDelinquencyDays" />
+                <ScalarProperty Name="TotalNumberofDelinquencyDaysInLastYear" ColumnName="TotalNumberofDelinquencyDaysInLastYear" />
+                <ScalarProperty Name="TotalNumberofOverdueInstallments" ColumnName="TotalNumberofOverdueInstallments" />
+                <ScalarProperty Name="CurrentUndisbursedLoanAmount_AmountValue" ColumnName="CurrentUndisbursedLoanAmount_AmountValue" />
+                <ScalarProperty Name="LoanType" ColumnName="LoanType" />
+                <ScalarProperty Name="CreditPurpose" ColumnName="CreditPurpose" />
+                <ScalarProperty Name="CreditCurrency" ColumnName="CreditCurrency" />
+                <ScalarProperty Name="PhaseofOperation" ColumnName="PhaseofOperation" />
+                <ScalarProperty Name="InformationAboutOverdueContract" ColumnName="InformationAboutOverdueContract" />
+                <ScalarProperty Name="LoanPartiallySecuredByDeposit" ColumnName="LoanPartiallySecuredByDeposit" />
+                <ScalarProperty Name="Dates_Start" ColumnName="Dates_Start" />
+                <ScalarProperty Name="Dates_ExpectedEnd" ColumnName="Dates_ExpectedEnd" />
+                <ScalarProperty Name="Dates_RealEnd" ColumnName="Dates_RealEnd" />
+                <ScalarProperty Name="Dates_Overdue" ColumnName="Dates_Overdue" />
+                <ScalarProperty Name="Dates_Repayment" ColumnName="Dates_Repayment" />
+                <ScalarProperty Name="Dates_CanceledDemand" ColumnName="Dates_CanceledDemand" />
+                <ScalarProperty Name="Dates_ExpofLimitation" ColumnName="Dates_ExpofLimitation" />
+                <ScalarProperty Name="ContractTerm" ColumnName="ContractTerm" />
+                <ScalarProperty Name="Penalty_PenaltySum_AmountValue" ColumnName="Penalty_PenaltySum_AmountValue" />
+                <ScalarProperty Name="Penalty_PenaltySum_Currency" ColumnName="Penalty_PenaltySum_Currency" />
+                <ScalarProperty Name="Penalty_PenaltyPaid_AmountValue" ColumnName="Penalty_PenaltyPaid_AmountValue" />
+                <ScalarProperty Name="Penalty_PenaltyPaid_Currency" ColumnName="Penalty_PenaltyPaid_Currency" />
+                <ScalarProperty Name="Subjects_IndividualRelation_IdentifierIndividual" ColumnName="Subjects_IndividualRelation_IdentifierIndividual" />
+                <ScalarProperty Name="Subjects_IndividualRelation_RoleOfClient" ColumnName="Subjects_IndividualRelation_RoleOfClient" />
+                <ScalarProperty Name="Subjects_CompanyRelation_IdentifierCompany" ColumnName="Subjects_CompanyRelation_IdentifierCompany" />
+                <ScalarProperty Name="Subjects_CompanyRelation_RoleOfClient" ColumnName="Subjects_CompanyRelation_RoleOfClient" />
+                <ScalarProperty Name="MaxInstallmentAmount" ColumnName="MaxInstallmentAmount" />
+                <ScalarProperty Name="MaxInstallmentCurrency" ColumnName="MaxInstallmentCurrency" />
+                <ScalarProperty Name="activeid" ColumnName="activeid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetInfoForContracts_NoNinstalmentPI" FunctionName="CreditinfoServiceModel.Store.GetInfoForContracts_NoNinstalmentPI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditinfoServiceModel.GetInfoForContracts_NoNinstalmentPI_Result">
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="RepaymentNoninstalment" ColumnName="RepaymentNoninstalment" />
+                <ScalarProperty Name="CreditLimitAmount_AmountValue" ColumnName="CreditLimitAmount_AmountValue" />
+                <ScalarProperty Name="CreditLimitAmount_Currency" ColumnName="CreditLimitAmount_Currency" />
+                <ScalarProperty Name="UsedAmount_AmountValue" ColumnName="UsedAmount_AmountValue" />
+                <ScalarProperty Name="UsedAmount_Currency" ColumnName="UsedAmount_Currency" />
+                <ScalarProperty Name="CreditUsedInMonth" ColumnName="CreditUsedInMonth" />
+                <ScalarProperty Name="CurrentOutstandingPrincipalAmount_AmountValue" ColumnName="CurrentOutstandingPrincipalAmount_AmountValue" />
+                <ScalarProperty Name="CurrentOutstandingPrincipalAmount_Currency" ColumnName="CurrentOutstandingPrincipalAmount_Currency" />
+                <ScalarProperty Name="MaximumNumberofDelinquencyDays" ColumnName="MaximumNumberofDelinquencyDays" />
+                <ScalarProperty Name="TotalNumberofDelinquencyDays" ColumnName="TotalNumberofDelinquencyDays" />
+                <ScalarProperty Name="TotalNumberofDelinquencyDaysInLastYear" ColumnName="TotalNumberofDelinquencyDaysInLastYear" />
+                <ScalarProperty Name="OverdueAmount_AmountValue" ColumnName="OverdueAmount_AmountValue" />
+                <ScalarProperty Name="OverdueAmount_Currency" ColumnName="OverdueAmount_Currency" />
+                <ScalarProperty Name="CurrentUndisbursedLoanAmount_AmountValue" ColumnName="CurrentUndisbursedLoanAmount_AmountValue" />
+                <ScalarProperty Name="CurrentUndisbursedLoanAmount_Currency" ColumnName="CurrentUndisbursedLoanAmount_Currency" />
+                <ScalarProperty Name="LoanType" ColumnName="LoanType" />
+                <ScalarProperty Name="CreditPurpose" ColumnName="CreditPurpose" />
+                <ScalarProperty Name="CreditCurrency" ColumnName="CreditCurrency" />
+                <ScalarProperty Name="PhaseofOperation" ColumnName="PhaseofOperation" />
+                <ScalarProperty Name="InformationAboutOverdueContract" ColumnName="InformationAboutOverdueContract" />
+                <ScalarProperty Name="LoanPartiallySecuredByDeposit" ColumnName="LoanPartiallySecuredByDeposit" />
+                <ScalarProperty Name="Dates_Start" ColumnName="Dates_Start" />
+                <ScalarProperty Name="Dates_ExpectedEnd" ColumnName="Dates_ExpectedEnd" />
+                <ScalarProperty Name="Dates_RealEnd" ColumnName="Dates_RealEnd" />
+                <ScalarProperty Name="Dates_Overdue" ColumnName="Dates_Overdue" />
+                <ScalarProperty Name="Dates_Repayment" ColumnName="Dates_Repayment" />
+                <ScalarProperty Name="Dates_CanceledDemand" ColumnName="Dates_CanceledDemand" />
+                <ScalarProperty Name="Dates_ExpofLimitation" ColumnName="Dates_ExpofLimitation" />
+                <ScalarProperty Name="ContractTerm" ColumnName="ContractTerm" />
+                <ScalarProperty Name="Penalty_PenaltySum_AmountValue" ColumnName="Penalty_PenaltySum_AmountValue" />
+                <ScalarProperty Name="Penalty_PenaltySum_Currency" ColumnName="Penalty_PenaltySum_Currency" />
+                <ScalarProperty Name="Penalty_PenaltyPaid_AmountValue" ColumnName="Penalty_PenaltyPaid_AmountValue" />
+                <ScalarProperty Name="Penalty_PenaltyPaid_Currency" ColumnName="Penalty_PenaltyPaid_Currency" />
+                <ScalarProperty Name="Subjects_key__0S__IndividualRelation_IdentifierIndividual" ColumnName="Subjects key=&quot;0S&quot;_IndividualRelation_IdentifierIndividual" />
+                <ScalarProperty Name="Subjects_key__0S__IndividualRelation_RoleOfClient" ColumnName="Subjects key=&quot;0S&quot;_IndividualRelation_RoleOfClient" />
+                <ScalarProperty Name="Subjects_key__0S__CompanyRelation_IdentifierCompany" ColumnName="Subjects key=&quot;0S&quot;_CompanyRelation_IdentifierCompany" />
+                <ScalarProperty Name="Subjects_key__0S__CompanyRelation_RoleOfClient" ColumnName="Subjects key=&quot;0S&quot;_CompanyRelation_RoleOfClient" />
+                <ScalarProperty Name="MaxInstallmentAmount" ColumnName="MaxInstallmentAmount" />
+                <ScalarProperty Name="MaxInstallmentCurrency" ColumnName="MaxInstallmentCurrency" />
+                <ScalarProperty Name="activeid" ColumnName="activeid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

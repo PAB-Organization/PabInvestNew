@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://cb4.creditinfosolutions.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://cb4.creditinfosolutions.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://cb4.creditinfosolutions.com/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLogBySeverity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLogBySeverityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLogBySeverityResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchUploadResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUploadWait">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="miliseconds" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUploadWaitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchUploadWaitResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FilterBatchUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FilterBatchUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilterBatchUploadResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="batchId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchResponseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchResponseResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Authorization">
+        <s:complexType />
+      </s:element>
+      <s:element name="AuthorizationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthorizationResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersionResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXmlSchema">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="schema" type="tns:XmlSchemaEnum" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="XmlSchemaEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="BasicBatchSchema" />
+          <s:enumeration value="FullBatchSchema" />
+          <s:enumeration value="BatchResponseSchema" />
+          <s:enumeration value="BatchResponseStatusSchema" />
+          <s:enumeration value="AuthorizationSchema" />
+          <s:enumeration value="MonitorSchema" />
+          <s:enumeration value="LogSchema" />
+          <s:enumeration value="VersionSchema" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetXmlSchemaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetXmlSchemaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLogByGuid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLogByGuidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLogByGuidResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMonitor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="adminSubscriberUnit" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMonitorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMonitorResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUploadChunkBegin">
+        <s:complexType />
+      </s:element>
+      <s:element name="BatchUploadChunkBeginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BatchUploadChunkBeginResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUploadChunk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="partNumber" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUploadChunkResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BatchUploadChunkFinish">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" default="Other" name="priority" type="tns:BatchPriorityClassEnum" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="BatchPriorityClassEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Other" />
+          <s:enumeration value="Interactive" />
+          <s:enumeration value="User" />
+          <s:enumeration value="BatchProcessing" />
+          <s:enumeration value="ExternalProcessing" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="BatchUploadChunkFinishResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchUploadChunkFinishResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUploadChunkWait">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" default="Other" name="priority" type="tns:BatchPriorityClassEnum" />
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="miliseconds" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUploadChunkWaitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchUploadChunkWaitResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchResponseStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchResponseStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchResponseStatusResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchResponseChunk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="partNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchResponseChunkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchResponseChunkResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLogBySeveritySoapIn">
+    <wsdl:part name="parameters" element="tns:GetLogBySeverity" />
+  </wsdl:message>
+  <wsdl:message name="GetLogBySeveritySoapOut">
+    <wsdl:part name="parameters" element="tns:GetLogBySeverityResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchUpload" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadWaitSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchUploadWait" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadWaitSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchUploadWaitResponse" />
+  </wsdl:message>
+  <wsdl:message name="FilterBatchUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:FilterBatchUpload" />
+  </wsdl:message>
+  <wsdl:message name="FilterBatchUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:FilterBatchUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthorizationSoapIn">
+    <wsdl:part name="parameters" element="tns:Authorization" />
+  </wsdl:message>
+  <wsdl:message name="AuthorizationSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthorizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlSchemaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetXmlSchema" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlSchemaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetXmlSchemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLogByGuidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLogByGuid" />
+  </wsdl:message>
+  <wsdl:message name="GetLogByGuidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLogByGuidResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMonitorSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMonitor" />
+  </wsdl:message>
+  <wsdl:message name="GetMonitorSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMonitorResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadChunkBeginSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchUploadChunkBegin" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadChunkBeginSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchUploadChunkBeginResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadChunkSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchUploadChunk" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadChunkSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchUploadChunkResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadChunkFinishSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchUploadChunkFinish" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadChunkFinishSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchUploadChunkFinishResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadChunkWaitSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchUploadChunkWait" />
+  </wsdl:message>
+  <wsdl:message name="BatchUploadChunkWaitSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchUploadChunkWaitResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchResponseStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchResponseStatus" />
+  </wsdl:message>
+  <wsdl:message name="BatchResponseStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchResponseStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchResponseChunkSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchResponseChunk" />
+  </wsdl:message>
+  <wsdl:message name="BatchResponseChunkSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchResponseChunkResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obsolete method.</wsdl:documentation>
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogBySeverity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obsolete method.</wsdl:documentation>
+      <wsdl:input message="tns:GetLogBySeveritySoapIn" />
+      <wsdl:output message="tns:GetLogBySeveritySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchUpload">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obsolete method.</wsdl:documentation>
+      <wsdl:input message="tns:BatchUploadSoapIn" />
+      <wsdl:output message="tns:BatchUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadWait">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obsolete method.</wsdl:documentation>
+      <wsdl:input message="tns:BatchUploadWaitSoapIn" />
+      <wsdl:output message="tns:BatchUploadWaitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FilterBatchUpload">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obsolete method.</wsdl:documentation>
+      <wsdl:input message="tns:FilterBatchUploadSoapIn" />
+      <wsdl:output message="tns:FilterBatchUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchResponse">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obsolete method.</wsdl:documentation>
+      <wsdl:input message="tns:BatchResponseSoapIn" />
+      <wsdl:output message="tns:BatchResponseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Authorization">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns authorization information on current user (user details, subscriber, sudoers, permissions etc.).</wsdl:documentation>
+      <wsdl:input message="tns:AuthorizationSoapIn" />
+      <wsdl:output message="tns:AuthorizationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns system build version.</wsdl:documentation>
+      <wsdl:input message="tns:GetVersionSoapIn" />
+      <wsdl:output message="tns:GetVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlSchema">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns XML schema for batch request and response.</wsdl:documentation>
+      <wsdl:input message="tns:GetXmlSchemaSoapIn" />
+      <wsdl:output message="tns:GetXmlSchemaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogByGuid">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Internal, get requested log.</wsdl:documentation>
+      <wsdl:input message="tns:GetLogByGuidSoapIn" />
+      <wsdl:output message="tns:GetLogByGuidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMonitor">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Internal, get monitoring information.</wsdl:documentation>
+      <wsdl:input message="tns:GetMonitorSoapIn" />
+      <wsdl:output message="tns:GetMonitorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunkBegin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Chunks - begin uploading. Opens new stream, returns newly assigned ID for the ongoing uploading.</wsdl:documentation>
+      <wsdl:input message="tns:BatchUploadChunkBeginSoapIn" />
+      <wsdl:output message="tns:BatchUploadChunkBeginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunk">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Chunks - upload part of batch. Receives binary part of a batch for given batch ID and part number.</wsdl:documentation>
+      <wsdl:input message="tns:BatchUploadChunkSoapIn" />
+      <wsdl:output message="tns:BatchUploadChunkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunkFinish">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Chunks - finish uploading. Finishes uploading, stream with given ID is closed and registered as new batch with specified priority class. Default priority is Other.</wsdl:documentation>
+      <wsdl:input message="tns:BatchUploadChunkFinishSoapIn" />
+      <wsdl:output message="tns:BatchUploadChunkFinishSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunkWait">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Simple send/receive batch in one call (with waiting).</wsdl:documentation>
+      <wsdl:input message="tns:BatchUploadChunkWaitSoapIn" />
+      <wsdl:output message="tns:BatchUploadChunkWaitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchResponseStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Chunks - get batch status. Returns details about current status of given batch. Then it might be received via BatchResponseChunk.</wsdl:documentation>
+      <wsdl:input message="tns:BatchResponseStatusSoapIn" />
+      <wsdl:output message="tns:BatchResponseStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchResponseChunk">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Chunks - get part of batch response. Returns requested part of batch response for given batch ID and part number.</wsdl:documentation>
+      <wsdl:input message="tns:BatchResponseChunkSoapIn" />
+      <wsdl:output message="tns:BatchResponseChunkSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogBySeverity">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/GetLogBySeverity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUpload">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/BatchUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadWait">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/BatchUploadWait" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterBatchUpload">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/FilterBatchUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchResponse">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/BatchResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authorization">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/Authorization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlSchema">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/GetXmlSchema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogByGuid">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/GetLogByGuid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMonitor">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/GetMonitor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunkBegin">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/BatchUploadChunkBegin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunk">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/BatchUploadChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunkFinish">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/BatchUploadChunkFinish" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunkWait">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/BatchUploadChunkWait" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchResponseStatus">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/BatchResponseStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchResponseChunk">
+      <soap:operation soapAction="http://cb4.creditinfosolutions.com/BatchResponseChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogBySeverity">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/GetLogBySeverity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUpload">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/BatchUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadWait">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/BatchUploadWait" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterBatchUpload">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/FilterBatchUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchResponse">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/BatchResponse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authorization">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/Authorization" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/GetVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlSchema">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/GetXmlSchema" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogByGuid">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/GetLogByGuid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMonitor">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/GetMonitor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunkBegin">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/BatchUploadChunkBegin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunk">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/BatchUploadChunk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunkFinish">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/BatchUploadChunkFinish" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUploadChunkWait">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/BatchUploadChunkWait" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchResponseStatus">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/BatchResponseStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchResponseChunk">
+      <soap12:operation soapAction="http://cb4.creditinfosolutions.com/BatchResponseChunk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="https://secure.creditinfo.ge/Webservice/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="https://secure.creditinfo.ge/Webservice/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
