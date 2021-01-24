@@ -22,7 +22,7 @@ namespace PabInvestNew
                 try
                 {
 
-                    // Response("421707040");
+                    // Response("410205839");
 
                     //UploadNonInstalment();
 
@@ -765,7 +765,7 @@ namespace PabInvestNew
                 var BUCFinish = auth.BatchUploadChunkFinish(get.creditinfosolutions.BatchPriorityClassEnum.BatchProcessing, BUCBegin);
 
                 long fin = Convert2Long(BUCFinish.SelectNodes("/*[1]/*[1]").Item(0).InnerText);
-                System.IO.File.AppendAllText(@"C:\Users\PAB\Desktop\analitics\_Analytics\Creditinfo\PabInvest\Shablons\result.txt", string.Format("{0}\t{1}\t{2}\r\n", file.Replace(".xml", ""), Convert.ToString(fin), cn));
+                System.IO.File.AppendAllText(@"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\result.txt", string.Format("{0}\t{1}\t{2}\r\n", file.Replace(".xml", ""), Convert.ToString(fin), cn));
 
                 using (var db = new CreditinfoServiceEntities())
                 {
