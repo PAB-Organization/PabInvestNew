@@ -31,11 +31,6 @@ namespace DataAccess
         public virtual DbSet<CreditInfoResult> CreditInfoResults { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
     
-        public virtual ObjectResult<TestCall_Result> TestCall()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TestCall_Result>("TestCall");
-        }
-    
         public virtual ObjectResult<GetPersonaData_intividualPI_Result> GetPersonaData_intividualPI()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPersonaData_intividualPI_Result>("GetPersonaData_intividualPI");
@@ -54,6 +49,77 @@ namespace DataAccess
         public virtual ObjectResult<GetInfoForContracts_NoNinstalmentPI_Result> GetInfoForContracts_NoNinstalmentPI()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInfoForContracts_NoNinstalmentPI_Result>("GetInfoForContracts_NoNinstalmentPI");
+        }
+    
+        public virtual ObjectResult<GetInfoForMail_Intallment_Gl_Result> GetInfoForMail_Intallment_Gl(string casenumber)
+        {
+            var casenumberParameter = casenumber != null ?
+                new ObjectParameter("Casenumber", casenumber) :
+                new ObjectParameter("Casenumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInfoForMail_Intallment_Gl_Result>("GetInfoForMail_Intallment_Gl", casenumberParameter);
+        }
+    
+        public virtual int SentByMail_GL(string casenumber, string claimid)
+        {
+            var casenumberParameter = casenumber != null ?
+                new ObjectParameter("Casenumber", casenumber) :
+                new ObjectParameter("Casenumber", typeof(string));
+    
+            var claimidParameter = claimid != null ?
+                new ObjectParameter("claimid", claimid) :
+                new ObjectParameter("claimid", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SentByMail_GL", casenumberParameter, claimidParameter);
+        }
+    
+        public virtual ObjectResult<GetInfoForContracts_CreditCard_Result> GetInfoForContracts_CreditCard()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInfoForContracts_CreditCard_Result>("GetInfoForContracts_CreditCard");
+        }
+    
+        public virtual ObjectResult<GetInfoForContracts_CreditCardML_Result> GetInfoForContracts_CreditCardML()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInfoForContracts_CreditCardML_Result>("GetInfoForContracts_CreditCardML");
+        }
+    
+        public virtual ObjectResult<GetInfoForContracts_Intallment_Result> GetInfoForContracts_Intallment()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInfoForContracts_Intallment_Result>("GetInfoForContracts_Intallment");
+        }
+    
+        public virtual ObjectResult<GetInfoForContracts_IntallmentML_Result> GetInfoForContracts_IntallmentML()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInfoForContracts_IntallmentML_Result>("GetInfoForContracts_IntallmentML");
+        }
+    
+        public virtual ObjectResult<GetInfoForContracts_NoNinstalment_Result> GetInfoForContracts_NoNinstalment()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInfoForContracts_NoNinstalment_Result>("GetInfoForContracts_NoNinstalment");
+        }
+    
+        public virtual ObjectResult<GetInfoForMail_Intallment_ML_Result> GetInfoForMail_Intallment_ML(string casenumber)
+        {
+            var casenumberParameter = casenumber != null ?
+                new ObjectParameter("Casenumber", casenumber) :
+                new ObjectParameter("Casenumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInfoForMail_Intallment_ML_Result>("GetInfoForMail_Intallment_ML", casenumberParameter);
+        }
+    
+        public virtual ObjectResult<GetPersonaData_Company_Result> GetPersonaData_Company()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPersonaData_Company_Result>("GetPersonaData_Company");
+        }
+    
+        public virtual ObjectResult<GetPersonaData_intividual_Result> GetPersonaData_intividual()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPersonaData_intividual_Result>("GetPersonaData_intividual");
+        }
+    
+        public virtual ObjectResult<GetPersonaData_intividualML_Result> GetPersonaData_intividualML()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPersonaData_intividualML_Result>("GetPersonaData_intividualML");
         }
     }
 }

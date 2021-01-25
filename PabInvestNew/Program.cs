@@ -22,29 +22,29 @@ namespace PabInvestNew
                 try
                 {
 
-                    // Response("410205839");
+                Response("429804253");
 
-                    //UploadNonInstalment();
+                //UploadNonInstalment();
 
-                    //Upload();
-                   
-                    UploadCreditCard();
-                    //SendMail("PubInvest: კრედიტინფოს სერვისი წარმატებით დასრულდა!");
-                    //using (var db = new CreditinfoServiceEntities())
-                    //{
-                    //    DateTime date = Convert.ToDateTime(DateTime.Now.AddDays(-1));
-                    //    date = Convert.ToDateTime(date.ToString("yyyy-MM-dd"));
-                    //    var query = from st in db.CreditInfoBatchIds
-                    //                 .Where(s => s.IsML == 2 && s.Date == date)
-                    //                select st;
-                    //    foreach (var batchid in query)
-                    //    {
-                    //        Response(batchid.BatchId.ToString());
-                    //    }
+                //  Upload();
 
-                    //}
-                }
-                catch (Exception ex)
+                //UploadCreditCard();
+                //SendMail("PubInvest: კრედიტინფოს სერვისი წარმატებით დასრულდა!");
+                //using (var db = new CreditinfoServiceEntities())
+                //{
+                //    DateTime date = Convert.ToDateTime(DateTime.Now.AddDays(-1));
+                //    date = Convert.ToDateTime(date.ToString("yyyy-MM-dd"));
+                //    var query = from st in db.CreditInfoBatchIds
+                //                 .Where(s => s.IsML == 2 && s.Date == date)
+                //                select st;
+                //    foreach (var batchid in query)
+                //    {
+                //        Response(batchid.BatchId.ToString());
+                //    }
+
+                //}
+            }
+            catch (Exception ex)
                 {
 
                 }
@@ -146,12 +146,12 @@ namespace PabInvestNew
                                 break;
                             using (var client = new CreditinfoService.ServiceSoapClient())
                             {
-                            var common = System.IO.File.ReadAllText(@"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\contract_outer.xml");
-                            var template = System.IO.File.ReadAllText(@"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\contract_CreditCard.xml");
+                            var common = System.IO.File.ReadAllText(@"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\contract_outer.xml");
+                            var template = System.IO.File.ReadAllText(@"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\contract_CreditCard.xml");
 
                             var guid = Guid.NewGuid().ToString();
 
-                            var fileName = @"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\GeneritedContract_CreditCard\" + guid + ".xml";
+                            var fileName = @"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\GeneritedContract_CreditCard\" + guid + ".xml";
                             float id = 1;
                                 foreach (var item in data)
                                 {
@@ -249,10 +249,10 @@ namespace PabInvestNew
                                     content = content.Replace("_Penalty_PenaltyPaid_Currency_", item.Penalty_PenaltyPaid_Currency);
                                     content = content.Replace("_Penalty_PenaltyPaid_AmountValue_", item.Penalty_PenaltyPaid_AmountValue.ToString());
                                     content = content.Replace("_PhaseofOperation_", item.PhaseofOperation);
-                                    //content = content.Replace("_Subjects_IndividualRelation_IdentifierIndividual_", item.Subjects_key__0S__IndividualRelation_IdentifierIndividual);
-                                    //content = content.Replace("_Subjects_IndividualRelation_RoleOfClient_", item.Subjects_key__0S__IndividualRelation_RoleOfClient);
-                                    content = content.Replace("_Subjects_IndividualRelation_IdentifierIndividual_", null);
-                                    content = content.Replace("_Subjects_IndividualRelation_RoleOfClient_", null);
+                                //content = content.Replace("_Subjects_IndividualRelation_IdentifierIndividual_", item.Subjects_key__0S__IndividualRelation_IdentifierIndividual);
+                               // content = content.Replace("_Subjects_IndividualRelation_RoleOfClient_", item.Subjects_key__0S__IndividualRelation_RoleOfClient);
+                                content = content.Replace("_Subjects_IndividualRelation_IdentifierIndividual_", null);
+                                content = content.Replace("_Subjects_IndividualRelation_RoleOfClient_", null);
                                     content = content.Replace("_getdate_", DateTime.Now.AddHours(-5).ToString("yyyy-MM-ddTHH:mm:ss"));
                                     content = content.Replace("_CurrentOverduePrincipalAmount_AmountValue_", item.CurrentOverduePrincipalAmount_AmountValue.ToString());
                                     content = content.Replace("_CurrentOverduePrincipalAmount_Currency_", item.CurrentOverduePrincipalAmount_Currency);
@@ -283,9 +283,9 @@ namespace PabInvestNew
                                 System.IO.File.WriteAllText(fileName, common);
 
 
-                                // es agzavnis
-                                UploadFile(fileName);
-                            }
+                            // es agzavnis
+                            UploadFile(fileName);
+                        }
                         }
 
                         //BatchResponse();
@@ -323,12 +323,12 @@ namespace PabInvestNew
                                 break;
                             using (var client = new CreditinfoService.ServiceSoapClient())
                             {
-                                var common = System.IO.File.ReadAllText(@"C:\Users\PAB\Desktop\analitics\_Analytics\Creditinfo\PabInvest\Shablons\contract_outer.xml");
-                                var template = System.IO.File.ReadAllText(@"C:\Users\PAB\Desktop\analitics\_Analytics\Creditinfo\PabInvest\Shablons\contract.xml");
+                                var common = System.IO.File.ReadAllText(@"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\contract_outer.xml");
+                                var template = System.IO.File.ReadAllText(@"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\contract.xml");
 
                                 var guid = Guid.NewGuid().ToString();
 
-                                var fileName = @"C:\Users\PAB\Desktop\analitics\_Analytics\Creditinfo\PabInvest\Shablons\Generated_CreditCard\" + guid + ".xml";
+                                var fileName = @"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\Generated_CreditCard\" + guid + ".xml";
                                 float id = 1;
                                 foreach (var item in data)
                                 {
@@ -432,10 +432,10 @@ namespace PabInvestNew
                                     content = content.Replace("_Penalty_PenaltyPaid_Currency_", item.Penalty_PenaltyPaid_Currency);
                                     content = content.Replace("_Penalty_PenaltyPaid_AmountValue_", item.Penalty_PenaltyPaid_AmountValue.ToString());
                                     content = content.Replace("_PhaseofOperation_", item.PhaseofOperation);
-                                    //content = content.Replace("_Subjects_IndividualRelation_IdentifierIndividual_", item.Subjects_IndividualRelation_IdentifierIndividual);
-                                    //content = content.Replace("_Subjects_IndividualRelation_RoleOfClient_", item.Subjects_IndividualRelation_RoleOfClient);
-                                    content = content.Replace("_Subjects_IndividualRelation_IdentifierIndividual_", null);
-                                    content = content.Replace("_Subjects_IndividualRelation_RoleOfClient_", null);
+                                //content = content.Replace("_Subjects_IndividualRelation_IdentifierIndividual_", item.Subjects_IndividualRelation_IdentifierIndividual);
+                               // content = content.Replace("_Subjects_IndividualRelation_RoleOfClient_", item.Subjects_IndividualRelation_RoleOfClient);
+                                content = content.Replace("_Subjects_IndividualRelation_IdentifierIndividual_", null);
+                                content = content.Replace("_Subjects_IndividualRelation_RoleOfClient_", null);
                                     content = content.Replace("_getdate_", DateTime.Now.AddHours(-5).ToString("yyyy-MM-ddTHH:mm:ss"));
                                     content = content.Replace("_CurrentOverduePrincipalAmount_AmountValue_", item.CurrentOverduePrincipalAmount_AmountValue.ToString());
                                     content = content.Replace("_CurrentOverduePrincipalAmount_Currency_", item.CurrentOverduePrincipalAmount_Currency);
@@ -497,12 +497,12 @@ namespace PabInvestNew
                                 break;
                             using (var client = new CreditinfoService.ServiceSoapClient())
                             {
-                                var common = System.IO.File.ReadAllText(@"C:\Users\PAB\Desktop\analitics\_Analytics\Creditinfo\PabInvest\Shablons\contract_outer.xml");
-                                var template = System.IO.File.ReadAllText(@"C:\Users\PAB\Desktop\analitics\_Analytics\Creditinfo\PabInvest\Shablons\contract_Noninstalment.xml");
+                                var common = System.IO.File.ReadAllText(@"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\contract_outer.xml");
+                                var template = System.IO.File.ReadAllText(@"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\contract_Noninstalment.xml");
 
                                 var guid = Guid.NewGuid().ToString();
 
-                                var fileName = @"C:\Users\PAB\Desktop\analitics\_Analytics\Creditinfo\PabInvest\Shablons\Generated_CreditCard\" + guid + ".xml";
+                                var fileName = @"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\Generated_NonInstalment\" + guid + ".xml";
                                 float id = 1;
                                 foreach (var item in data)
                                 {
@@ -633,7 +633,7 @@ namespace PabInvestNew
 
 
                                 // es agzavnis
-                                UploadFile(fileName);
+                              //  UploadFile(fileName);
 
                             }
                         }
@@ -658,12 +658,12 @@ namespace PabInvestNew
                         var data = db.GetPersonaData_intividualPI().ToList();
                         using (var client = new CreditinfoService.ServiceSoapClient())
                         {
-                            var common = System.IO.File.ReadAllText(@"C:\Users\PAB\Desktop\analitics\_Analytics\Creditinfo\PabInvest\Shablons\contract_outer.xml");
-                            var template = System.IO.File.ReadAllText(@"C:\Users\PAB\Desktop\analitics\_Analytics\Creditinfo\PabInvest\Shablons\Individual.xml");
+                            var common = System.IO.File.ReadAllText(@"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\contract_outer.xml");
+                            var template = System.IO.File.ReadAllText(@"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\Individual.xml");
 
                             var guid = Guid.NewGuid().ToString();
 
-                            var fileName = @"C:\Users\PAB\Desktop\analitics\_Analytics\Creditinfo\PabInvest\Shablons\Generated PersonalData\" + guid + ".xml";
+                            var fileName = @"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\Generated_PersonalData\" + guid + ".xml";
                             float id = 1;
                             foreach (var item in data)
                             {

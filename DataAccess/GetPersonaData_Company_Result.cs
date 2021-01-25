@@ -11,9 +11,11 @@ namespace DataAccess
 {
     using System;
     
-    public partial class TestCall_Result
+    public partial class GetPersonaData_Company_Result
     {
-        public string Name { get; set; }
-        public string SurName { get; set; }
+        public string CompanyData_TaxNumber { get; set; }
+        public string CompanyData_TradeName { get; set; }
+        public string CompanyDat_LegalForm { get; set; }
+        public string Address { get; set; }
     }
 }
