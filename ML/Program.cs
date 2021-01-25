@@ -21,12 +21,12 @@ namespace ML
             try
             {
 
-                Response("429804253");
+                //Response("429804253");
 
 
-                //  Upload();
+                Upload();
 
-                //UploadCreditCard();
+                UploadCreditCard();
                 //SendMail("PubInvest: კრედიტინფოს სერვისი წარმატებით დასრულდა!");
                 //using (var db = new CreditinfoServiceEntities())
                 //{
@@ -430,6 +430,8 @@ namespace ML
                                 content = content.Replace("_Penalty_PenaltyPaid_Currency_", item.Penalty_PenaltyPaid_Currency);
                                 content = content.Replace("_Penalty_PenaltyPaid_AmountValue_", item.Penalty_PenaltyPaid_AmountValue.ToString());
                                 content = content.Replace("_PhaseofOperation_", item.PhaseofOperation);
+                                content = content.Replace("_Dates_ExpofLimitation_", item.Dates_ExpofLimitation.HasValue ? item.Dates_ExpofLimitation.Value.ToString("yyyy-MM-ddT00:00:00") : "");
+
                                 //content = content.Replace("_Subjects_IndividualRelation_IdentifierIndividual_", item.Subjects_IndividualRelation_IdentifierIndividual);
                                 // content = content.Replace("_Subjects_IndividualRelation_RoleOfClient_", item.Subjects_IndividualRelation_RoleOfClient);
                                 content = content.Replace("_Subjects_IndividualRelation_IdentifierIndividual_", null);
