@@ -22,13 +22,13 @@ namespace PabInvestNew
                 try
                 {
 
-                Response("429805413");
+                //Response("429805471");
 
-                //UploadNonInstalment();
+                UploadNonInstalment();
 
-                //  Upload();
+                Upload();
 
-                //UploadCreditCard();
+                UploadCreditCard();
                 //SendMail("PubInvest: კრედიტინფოს სერვისი წარმატებით დასრულდა!");
                 //using (var db = new CreditinfoServiceEntities())
                 //{
@@ -328,7 +328,7 @@ namespace PabInvestNew
 
                                 var guid = Guid.NewGuid().ToString();
 
-                                var fileName = @"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\Generated_CreditCard\" + guid + ".xml";
+                                var fileName = @"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\PabInvest\Generated_Instalment\" + guid + ".xml";
                                 float id = 1;
                                 foreach (var item in data)
                                 {

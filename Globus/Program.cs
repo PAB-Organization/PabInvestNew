@@ -21,13 +21,13 @@ namespace Globus
             try
             {
 
-                Response("429804253");
+                //Response("429804253");
 
-                //UploadNonInstalment();
+                UploadNonInstalment();
 
                   Upload();
 
-                //UploadCreditCard();
+                UploadCreditCard();
                 //SendMail("PubInvest: კრედიტინფოს სერვისი წარმატებით დასრულდა!");
                 //using (var db = new CreditinfoServiceEntities())
                 //{
@@ -327,7 +327,7 @@ namespace Globus
 
                             var guid = Guid.NewGuid().ToString();
 
-                            var fileName = @"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\Globus\Generated_CreditCard\" + guid + ".xml";
+                            var fileName = @"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\Globus\Generated_Instalment\" + guid + ".xml";
                             float id = 1;
                             foreach (var item in data)
                             {
@@ -634,7 +634,7 @@ namespace Globus
 
 
                             // es agzavnis
-                            //  UploadFile(fileName);
+                              UploadFile(fileName);
 
                         }
                     }

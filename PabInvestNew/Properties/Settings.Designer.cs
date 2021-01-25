@@ -27,9 +27,9 @@ namespace PabInvestNew.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("https://secure.creditinfo.ge/Webservice/Service.asmx")]
-        public string PabInvestNew_ge_creditinfo_secure_Service {
+        public string PabInvestNew_get_creditinfosolutions_Service {
             get {
-                return ((string)(this["PabInvestNew_ge_creditinfo_secure_Service"]));
+                return ((string)(this["PabInvestNew_get_creditinfosolutions_Service"]));
             }
         }
     }

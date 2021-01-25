@@ -67,7 +67,7 @@ namespace PabInvestNew.get.creditinfosolutions {
         
         /// <remarks/>
         public Service() {
-            this.Url = global::PabInvestNew.Properties.Settings.Default.PabInvestNew_ge_creditinfo_secure_Service;
+            this.Url = global::PabInvestNew.Properties.Settings.Default.PabInvestNew_get_creditinfosolutions_Service;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

@@ -175,7 +175,7 @@
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>PabInvestNew_ge_creditinfo_secure_Service</CachedSettingsPropName>
+      <CachedSettingsPropName>PabInvestNew_get_creditinfosolutions_Service</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

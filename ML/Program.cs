@@ -21,7 +21,7 @@ namespace ML
             try
             {
 
-                //Response("429804253");
+                Response("429805789");
 
 
                 Upload();
@@ -326,7 +326,7 @@ namespace ML
 
                             var guid = Guid.NewGuid().ToString();
 
-                            var fileName = @"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\ML\Generated_CreditCard\" + guid + ".xml";
+                            var fileName = @"C:\Users\L.Shanava\Desktop\PAB\CreditInfo\Shablons\ML\Generated_Instalment\" + guid + ".xml";
                             float id = 1;
                             foreach (var item in data)
                             {
